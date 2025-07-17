@@ -1,17 +1,32 @@
 package de.tomasz.smolak;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import de.tomasz.smolak.controller.LinkedHashMapController;
+import de.tomasz.smolak.model.LinkedHashMapService;
+import de.tomasz.smolak.view.LinkedHashMapView;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+/**
+ * Einstiegspunkt der Anwendung zur Cache-Verwaltung mit LinkedHashMap.
+ * <p>
+ * Initialisiert Service, View und Controller und startet die GUI.
+ * </p>
+ *
+ * @author Tomasz
+ * @version 1.0
+ */
+public class Main {
+
+    /**
+     * Main-Methode: Startet die Anwendung.
+     *
+     * @param args nicht verwendet
+     */
+    public static void main(String[] args) {
+        // Pfad zur Datei, in der der Cache gespeichert wird
+        String filePath = "cache.txt";
+
+        // Initialisierung der Komponenten
+        LinkedHashMapService service = new LinkedHashMapService(filePath);
+        LinkedHashMapView view = new LinkedHashMapView();
+        new LinkedHashMapController(service, view); // verbindet alles
     }
 }
